@@ -14,4 +14,14 @@ var lapTime = stopTime - startTime; // Lap time in milliseconds
 console.log("Starting time in milliseconds: " + startTime);
 console.log("Stopping time in milliseconds: " + stopTime);
 console.log("Lap time in milliseconds: " + lapTime);
- 
+
+// Fallthrough if statements to separate the times into hours, minutes, seconds and milliseconds
+if (lapTime >= 3600000) {
+    console.log("The lap time is hours long");    
+}else if (lapTime >= 60000) {
+    console.log("The lap time is minutes long");
+}else if (lapTime >= 1000) {
+    console.log("The lap time is seconds long");
+}else {
+    console.log("The lap time is less than a second");
+}
