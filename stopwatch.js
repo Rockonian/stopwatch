@@ -7,7 +7,7 @@
 
 // Declaring and initializing variables
 var startTime = Date.now(); // Stopwatch starts with the current time in milliseconds
-var stopTime = startTime + 666; // ******* Stop time testing this will change ********
+var stopTime = startTime + 12666; // ******* Stop time testing this will change ********
 var lapTime = stopTime - startTime; // Lap time in milliseconds
 // Variables used in if statement
 var lapMS;
@@ -27,7 +27,28 @@ function onlyMS() {
     lapSec = lapTime / 1000;
     fixedMS = lapSec.toFixed(3);
     stringMS = fixedMS.slice(-3);
-    console.log("00:00:00:" + stringMS);
+    console.log("stringMS is: " + stringMS);
+}
+
+function onlySec() {
+    lapSec = lapTime / 1000;
+    if (lapSec < 10) {
+        fixedMS = lapSec.toFixed(3);
+        stringMS = fixedMS.slice(-3);
+        stringSec = fixedMS.slice(0, 1);
+        console.log("stringSec is: " + stringSec + ", and stringMS is: " + stringMS);
+    }else {
+        fixedMS = lapSec.toFixed(3);
+        stringMS = fixedMS.slice(-3);
+        stringSec = fixedMS.slice(0, 2);
+        console.log("stringSec is: " + stringSec + ", and stringMS is: " + stringMS);
+    }
+}
+
+function onlyMin() {
+    lapMin = Math.floor(lapTime / 60000);
+    console.log("lapMin is :" + lapMin);
+    
 }
 
 if (lapTime >= 3600000) {
@@ -35,7 +56,8 @@ if (lapTime >= 3600000) {
 }else if (lapTime >= 60000) {
     console.log("The lap time is one minute or more, but less than one hour");    
 }else if (lapTime >= 1000) {
-    console.log("The lap time is one second or more, but less than one minute");    
+    console.log("The lap time is one second or more, but less than one minute");
+    onlySec();    
 }else {
     console.log("The lap is less than one second");
     onlyMS();
