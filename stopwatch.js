@@ -7,7 +7,7 @@
 
 // Declaring and initializing variables
 var startTime = Date.now(); // Stopwatch starts with the current time in milliseconds
-var stopTime = startTime + 1234; // ******* Stop time testing this will change ********
+var stopTime = startTime + 666; // ******* Stop time testing this will change ********
 var lapTime = stopTime - startTime; // Lap time in milliseconds
 // Variables used in if statement
 var lapMS;
@@ -23,6 +23,24 @@ console.log("Starting time in milliseconds: " + startTime);
 console.log("Stopping time in milliseconds: " + stopTime);
 console.log("Lap time in milliseconds: " + lapTime);
 
+function onlyMS() {
+    lapSec = lapTime / 1000;
+    fixedMS = lapSec.toFixed(3);
+    stringMS = fixedMS.slice(-3);
+    console.log("00:00:00:" + stringMS);
+}
+
+if (lapTime >= 3600000) {
+    console.log("The lap time is one hour or more");    
+}else if (lapTime >= 60000) {
+    console.log("The lap time is one minute or more, but less than one hour");    
+}else if (lapTime >= 1000) {
+    console.log("The lap time is one second or more, but less than one minute");    
+}else {
+    console.log("The lap is less than one second");
+    onlyMS();
+}
+/*
 // Fall through if statements to separate the times into hours, minutes, seconds and milliseconds
 // One hour or more
 if (lapTime >= 3600000) {
@@ -32,8 +50,27 @@ if (lapTime >= 3600000) {
 // One minute or more, but less than one hour
 }else if (lapTime >= 60000) {
     console.log("The lap time is minutes long");
-    lapSec = lapTime / 1000;
-    console.log(lapHr + ":" + lapMin + ":" + lapSec);
+    lapMin = Math.floor(lapTime / 60000);
+    console.log("lapMin = " + lapMin);    
+    lapSec = (lapTime - (lapMin * 60000));
+    console.log("lapSec = " + lapSec);    
+    lapMS = Math.floor(lapTime - (lapMin * 60000) - (lapSec * 1000));
+    console.log("lapMS = " + lapMS);    
+    if (lapMin < 10) {
+        if (lapSec < 10) {
+            console.log("00:0" + lapMin + ":0" + lapSec + ":" + lapMS);
+            
+        }else {
+            console.log("00:0" + lapMin + ":" + lapSec + ":" + lapMS);
+        }
+    }else {
+        if (lapSec < 10) {
+            console.log("00:" + lapMin + ":0" + lapSec + ":" + lapMS);
+            
+        }else {
+            console.log("00:" + lapMin + ":" + lapSec + ":" + lapMS);
+        }
+    }
 // One second or more, but less than one minute
 }else if (lapTime >= 1000) {
     console.log("The lap time is seconds long");
@@ -57,6 +94,7 @@ if (lapTime >= 3600000) {
     stringMS = fixedMS.slice(-3);
     console.log("00:00:00:" + stringMS);
 }
+*/
 
 // Miles Per Hour formula
 var trackSize = 1 / 7; // We will get this from user input
