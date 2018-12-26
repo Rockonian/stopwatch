@@ -51,7 +51,7 @@ function onlyMin() {
     }   
 }
 
-function onlyHR() {
+function onlyHr() {
     if (lapHr < 10) {
         onlyMin();
     } else {
@@ -67,7 +67,7 @@ if (lapTime >= 3600000) {
     console.log("lapHr is " + lapHr);
     console.log("lapMin is " + lapMin);
     console.log("lapSec is " + lapSec); 
-    onlyHR();
+    onlyHr();
 }else if (lapTime >= 60000) {
     console.log("The lap time is one minute or more, but less than one hour");
     lapMin = Math.floor(lapTime / 60000);
