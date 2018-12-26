@@ -38,3 +38,9 @@ if (lapTime >= 3600000) {
     lapSec = lapTime / 1000;
     console.log(lapHr + ":" + lapMin + ":" + lapSec);
 }
+
+// Miles Per Hour formula
+var trackSize = 1/7;
+var bigMph = trackSize / (lapTime / 1000 / 60 / 60);
+var mph = bigMph.toFixed(2);
+console.log(mph + " MPH");
