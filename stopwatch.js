@@ -7,13 +7,13 @@
 
 // Declaring and initializing variables
 var startTime = Date.now(); // Stopwatch starts with the current time in milliseconds
-var stopTime = startTime + 3720000; // ******* Stop time testing this will change ********
+var stopTime = startTime + 6666; // ******* Stop time testing this will change ********
 var lapTime = stopTime - startTime; // Lap time in milliseconds
 // Variables used in if statement
 var lapMS;
-var lapSec; 
-var lapMin;
-var lapHr;
+var lapSec = 0; 
+var lapMin = 0;
+var lapHr = 0;
 var fixedMS;
 var stringMS;
 var stringSec;
@@ -27,6 +27,9 @@ function onlyMS() {
     fixedMS = lapSec.toFixed(3);
     stringMS = fixedMS.slice(-3);
     console.log("stringMS is: " + stringMS);
+    console.log("0" + lapHr + ":0" + lapMin + ":00" + ":" + stringMS);
+    
+
 }
 
 function onlySec() {
