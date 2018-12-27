@@ -4,7 +4,11 @@
     Date:     12/27/2018
 */
 
-
+// Clock variables
+var clockHours = document.getElementById("watchHour");
+var clockMinutes = document.getElementById("watchMinute");
+var clockSeconds = document.getElementById("watchSeconds");
+var clockMseconds = document.getElementById("watchMseconds")
 // Button variables
 var startButton = document.getElementById("start");
 var stopButton = document.getElementById("stop");
