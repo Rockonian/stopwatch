@@ -6,11 +6,22 @@
   </head>
   <body>
     <h1>Hot Lap Stopwatch</h1>
-    <button type="button" name="start" id="start">Start</button>
-    <button type="button" name="stop" id="stop">Stop</button>
-    <button type="button" name="lap" id="lap">Lap</button>
-    <button type="button" name="clear" id="clear">Clear</button>
+    <!-- Stopwatch Animimation -->
+    <div class="wrapper">
+      <span id="watchHour">00</span>:<span id="watchMinute">00</span>:<span id="watchSeconds">00</span>:<span id="watchMseconds">000</span>
+    </div>
+    <!-- Buttons -->
+    <div class="clickers">
+      <button type="button" name="start" id="start">Start</button>
+      <button type="button" name="stop" id="stop">Stop</button>
+      <button type="button" name="lap" id="lap">Lap</button>
+      <button type="button" name="clear" id="clear">Clear</button>
+    </div>
+    <!-- Lap Counter Information -->
+    <div class="records">
+
+    </div>
   </body>
   <footer>&copy;<span id="copyYear">20XX</span>. Bud Welsh. All Rights Reserved.</footer>
-  <script src="main.js"></script>
+  <script src="new_stopwatch.js"></script>
 </html>
