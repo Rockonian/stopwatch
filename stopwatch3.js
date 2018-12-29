@@ -37,8 +37,10 @@ function printFinalResults() {
 function printResults() {
   console.log(">>>> Entering printResults() function");
   console.log("Lap number = " + lap + " Stop Time = " + lapStopTime + " Start Time = " + lapStartTime);
+  averageTime = ((clockStopTime - clockStartTime) / lap);
   lapTime = (lapStopTime - lapStartTime);
   console.log("Lap Time = " + lapTime);
+  console.log("Average Time = " + averageTime);
   console.log("<<<< Leaving printResults() function");
 }
 
