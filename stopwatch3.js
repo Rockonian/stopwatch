@@ -15,15 +15,45 @@ var hour = 0;
 var minute = 0;
 var second = 0;
 var millisecond = 0;
-var lap = 1;
+var lap = 0;
 var working;
-var startTime;
-var stopTime;
+var clockStartTime;
+var clockStopTime;
+var lapStartTime;
+var lapStopTime;
+
+function startLap() {
+  console.log(">>>> Entering startLap() function");
+  lap++;
+  lapStartTime = Date.now();
+  console.log("Lap Count is " + lap);
+  console.log("Start lap time in milliseconds = " + lapStartTime);
+  console.log("<<<< Leaving startLap() function");
+}
+
+function stopLap() {
+  console.log(">>>> Entering stopLap() function");
+  lapStopTime = Date.now();
+  console.log("Stop lap time in milliseconds = " + lapStopTime);
+  console.log("<<<< Leaving stopLap() function");
+}
+
+// This function might be cut out if adding lap times is easier
+// function startClock() {
+//   clockStartTime = Date.now();
+//   console.log("Start time in milliseconds = " + clockStartTime);
+// }
+
+// This function might be cut out if adding lap times is easier
+// function stopClock() {
+//   clockStopTime = Date.now();
+//   console.log("Stop time in milliseconds = " + clockStopTime);
+// }
 
 function starting() {
   console.log(">>> Entering starting() function");
-  startClock();
-  // startLap();
+  // startClock();
+  startLap();
   // startAverage();
   // startSpeed();
   startButton.disabled = true;
@@ -35,8 +65,8 @@ function starting() {
 
 function stopping() {
   console.log(">>> Entering stopping() function");
-  stopClock();
-  // stopLap();
+  // stopClock();
+  stopLap();
   // stopAverage();
   // stopSpeed();
   startButton.disabled = false;
@@ -49,23 +79,27 @@ function stopping() {
 function lapping() {
   console.log(">>> Entering lapping() function");
   // lapClock();
-  // stopLap();
-  // startLap();
+  stopLap();
+  startLap();
   // lapAverage();
   // lapSpeed();
-  startButton.disabled = false;
-  stopButton.disabled = true;
-  lapButton.disabled = true;
-  clearButton.disabled = false;
+  startButton.disabled = true;
+  stopButton.disabled = false;
+  lapButton.disabled = false;
+  clearButton.disabled = true;
   console.log("<<< Leaving lapping() function");
 }
 
 function clearing() {
   console.log(">>> Entering clearing() function");
-  startButton.disabled = true;
-  stopButton.disabled = false;
-  lapButton.disabled = false;
-  clearButton.disabled = true;
+  startButton.disabled = false;
+  stopButton.disabled = true;
+  lapButton.disabled = true;
+  clearButton.disabled = false;
+  lap = 0;
+  lapStartTime = 0;
+  lapStopTime = 0;
+  console.log("Lap = " + lap + " lapStartTime = " + lapStartTime + " lapStopTime = " + lapStopTime);
   console.log("<<< Leaving clearing() function");
 }
 
