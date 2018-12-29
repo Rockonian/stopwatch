@@ -15,53 +15,61 @@ var hour = 0;
 var minute = 0;
 var second = 0;
 var millisecond = 0;
+// Button variables
 var lap = 0;
-// var clockStartTime;
-// var clockStopTime;
-var lapStartTime;
-var lapStopTime;
+var clockStartTime;
+var clockStopTime;
+var lapStartTime = Date.now();
+var lapStopTime = Date.now();
 var lapTime;
 
-function lapSpeedTime(a, b, c) {
-  lapTime = (c - b);
-  console.log("Lap " + a + " " + lapTime);
-}
+// function lapSpeedTime(a, b, c) {
+//   lapTime = (c - b);
+//   console.log("Lap " + a + " " + lapTime);
+// }
 
-function startLap() {
-  console.log(">>>> Entering startLap() function");
-  lap++;
-  lapStartTime = Date.now();
-  console.log("Lap Count is " + lap);
-  console.log("Start lap time in milliseconds = " + lapStartTime);
-  console.log("<<<< Leaving startLap() function");
-}
-
-function stopLap() {
-  console.log(">>>> Entering stopLap() function");
-  lapStopTime = Date.now();
-  lapSpeedTime(lap, lapStartTime, lapStopTime);
-  console.log("Stop lap time in milliseconds = " + lapStopTime);
-  console.log("<<<< Leaving stopLap() function");
-}
+// function startLap() {
+//   console.log(">>>> Entering startLap() function");
+//   lap++;
+//   lapStartTime = lapStopTime;
+//   console.log("Lap Count is " + lap);
+//   console.log("Start lap time in milliseconds = " + lapStartTime);
+//   console.log("<<<< Leaving startLap() function");
+// }
+//
+// function stopLap() {
+//   console.log(">>>> Entering stopLap() function");
+//   lapStopTime = Date.now();
+//   // lapSpeedTime(lap, lapStartTime, lapStopTime);
+//   console.log("Stop lap time in milliseconds = " + lapStopTime);
+//   console.log("<<<< Leaving stopLap() function");
+// }
 
 // This function might be cut out if adding lap times is easier
 // function startClock() {
 //   clockStartTime = Date.now();
+//   lapStartTime = clockStartTime;
 //   console.log("Start time in milliseconds = " + clockStartTime);
 // }
 
 // This function might be cut out if adding lap times is easier
 // function stopClock() {
 //   clockStopTime = Date.now();
+//   lapStopTime = clockStopTime;
 //   console.log("Stop time in milliseconds = " + clockStopTime);
 // }
 
 function starting() {
   console.log(">>> Entering starting() function");
+  clockStartTime = Date.now();
+  lapStartTime = clockStartTime;
+  lap++;
+  console.log("Start time in milliseconds = " + clockStartTime);
   // startClock();
-  startLap();
+  // startLap();
   // startAverage();
   // startSpeed();
+  console.log("Lap number = " + lap + " Start Time = " + lapStartTime);
   startButton.disabled = true;
   stopButton.disabled = false;
   lapButton.disabled = false;
@@ -71,10 +79,14 @@ function starting() {
 
 function stopping() {
   console.log(">>> Entering stopping() function");
+  clockStopTime = Date.now();
+  lapStopTime = clockStopTime;
+  console.log("Stop time in milliseconds = " + clockStopTime);
   // stopClock();
-  stopLap();
+  // stopLap();
   // stopAverage();
   // stopSpeed();
+  console.log("Lap number = " + lap + " Stop Time = " + lapStopTime);
   startButton.disabled = false;
   stopButton.disabled = true;
   lapButton.disabled = true;
@@ -84,11 +96,16 @@ function stopping() {
 
 function lapping() {
   console.log(">>> Entering lapping() function");
+  lapStopTime = Date.now();
+
+  lapStartTime = lapStopTime;
+  lap++;
   // lapClock();
-  stopLap();
-  startLap();
+  // stopLap();
+  // startLap();
   // lapAverage();
   // lapSpeed();
+  console.log("Lap number = " + lap + " Stop Time = " + lapStopTime + " Start Time = " + lapStartTime);
   startButton.disabled = true;
   stopButton.disabled = false;
   lapButton.disabled = false;
@@ -105,6 +122,8 @@ function clearing() {
   lap = 0;
   lapStartTime = 0;
   lapStopTime = 0;
+  clockStartTime = 0;
+  clockStopTime = 0;
   console.log("Lap = " + lap + " lapStartTime = " + lapStartTime + " lapStopTime = " + lapStopTime);
   console.log("<<< Leaving clearing() function");
 }
