@@ -2,7 +2,7 @@
   Title:        Stopwatch 3 JavaScript
   Date:         12/29/2018
   Author:       Bud Welsh
-  Description:  This won't have a visual clock running, but it will keep accurate time.
+  Description:  This won't have a visual clock running, but it will keep fairly accurate time.
 */
 
 // Button variables
@@ -16,11 +16,16 @@ var minute = 0;
 var second = 0;
 var millisecond = 0;
 var lap = 0;
-var working;
-var clockStartTime;
-var clockStopTime;
+// var clockStartTime;
+// var clockStopTime;
 var lapStartTime;
 var lapStopTime;
+var lapTime;
+
+function lapSpeedTime(a, b, c) {
+  lapTime = (c - b);
+  console.log("Lap " + a + " " + lapTime);
+}
 
 function startLap() {
   console.log(">>>> Entering startLap() function");
@@ -34,6 +39,7 @@ function startLap() {
 function stopLap() {
   console.log(">>>> Entering stopLap() function");
   lapStopTime = Date.now();
+  lapSpeedTime(lap, lapStartTime, lapStopTime);
   console.log("Stop lap time in milliseconds = " + lapStopTime);
   console.log("<<<< Leaving stopLap() function");
 }
