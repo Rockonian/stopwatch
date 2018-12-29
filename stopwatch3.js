@@ -2,7 +2,7 @@
   Title:        Stopwatch 3 JavaScript
   Date:         12/29/2018
   Author:       Bud Welsh
-  Description:  This won't have a visual clock running, but it will keep fairly accurate time.
+  Description:  This won't have a visual clock running, but it will keep accurate time.
 */
 
 // Button variables
@@ -16,48 +16,31 @@ var minute = 0;
 var second = 0;
 var millisecond = 0;
 // Button variables
+var clockStartTime = 0;
+var clockStopTime = 0;
+var lapStartTime = 0;
+var lapStopTime = 0;
+// Resutls variables
 var lap = 0;
-var clockStartTime;
-var clockStopTime;
-var lapStartTime = Date.now();
-var lapStopTime = Date.now();
-var lapTime;
+var lapTime = 0;
+var averageTime = 0;
 
-// function lapSpeedTime(a, b, c) {
-//   lapTime = (c - b);
-//   console.log("Lap " + a + " " + lapTime);
-// }
+function printFinalResults() {
+  console.log(">>>> Entering printFinalResults() function");
+  averageTime = ((clockStopTime - clockStartTime) / lap);
+  lapTime = (lapStopTime - lapStartTime);
+  console.log("Lap Time = " + lapTime);
+  console.log("Average Time = " + averageTime);
+  console.log("<<<< Leaving printFinalResults() function");
+}
 
-// function startLap() {
-//   console.log(">>>> Entering startLap() function");
-//   lap++;
-//   lapStartTime = lapStopTime;
-//   console.log("Lap Count is " + lap);
-//   console.log("Start lap time in milliseconds = " + lapStartTime);
-//   console.log("<<<< Leaving startLap() function");
-// }
-//
-// function stopLap() {
-//   console.log(">>>> Entering stopLap() function");
-//   lapStopTime = Date.now();
-//   // lapSpeedTime(lap, lapStartTime, lapStopTime);
-//   console.log("Stop lap time in milliseconds = " + lapStopTime);
-//   console.log("<<<< Leaving stopLap() function");
-// }
-
-// This function might be cut out if adding lap times is easier
-// function startClock() {
-//   clockStartTime = Date.now();
-//   lapStartTime = clockStartTime;
-//   console.log("Start time in milliseconds = " + clockStartTime);
-// }
-
-// This function might be cut out if adding lap times is easier
-// function stopClock() {
-//   clockStopTime = Date.now();
-//   lapStopTime = clockStopTime;
-//   console.log("Stop time in milliseconds = " + clockStopTime);
-// }
+function printResults() {
+  console.log(">>>> Entering printResults() function");
+  console.log("Lap number = " + lap + " Stop Time = " + lapStopTime + " Start Time = " + lapStartTime);
+  lapTime = (lapStopTime - lapStartTime);
+  console.log("Lap Time = " + lapTime);
+  console.log("<<<< Leaving printResults() function");
+}
 
 function starting() {
   console.log(">>> Entering starting() function");
@@ -81,6 +64,7 @@ function stopping() {
   console.log(">>> Entering stopping() function");
   clockStopTime = Date.now();
   lapStopTime = clockStopTime;
+  printFinalResults();
   console.log("Stop time in milliseconds = " + clockStopTime);
   // stopClock();
   // stopLap();
@@ -97,7 +81,7 @@ function stopping() {
 function lapping() {
   console.log(">>> Entering lapping() function");
   lapStopTime = Date.now();
-
+  printResults();
   lapStartTime = lapStopTime;
   lap++;
   // lapClock();
@@ -124,6 +108,8 @@ function clearing() {
   lapStopTime = 0;
   clockStartTime = 0;
   clockStopTime = 0;
+  lapTime = 0;
+  averageTime = 0;
   console.log("Lap = " + lap + " lapStartTime = " + lapStartTime + " lapStopTime = " + lapStopTime);
   console.log("<<< Leaving clearing() function");
 }
