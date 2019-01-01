@@ -126,6 +126,18 @@ function speedQuestion() {
   // Readout Variables
   var readout = document.getElementById("display");
   readout.appendChild(askElement);
+  // Create Yes and No Buttons
+  var yesButton = document.createElement("BUTTON");
+  yesButton.id = "yesSpeed";
+  var callSize = document.createTextNode("Yes");
+  yesButton.appendChild(callSize);
+  var noButton = document.createElement("BUTTON");
+  noButton.id = "noSpeed";
+  var callTime = document.createTextNode("No");
+  noButton.appendChild(callTime);
+
+  readout.appendChild(yesButton);
+  readout.appendChild(noButton);  
   console.log("<< Leaving speedQuestion() function");
 }
 
