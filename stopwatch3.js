@@ -25,6 +25,7 @@ var lap = 0;
 var lapTime = 0;
 var averageTime = 0;
 
+// Time and Speed Results
 function printFinalResults() {
   console.log(">>>> Entering printFinalResults() function");
   averageTime = ((clockStopTime - clockStartTime) / lap);
@@ -44,6 +45,7 @@ function printResults() {
   console.log("<<<< Leaving printResults() function");
 }
 
+// Time Button Functions
 function starting() {
   console.log(">>> Entering starting() function");
   clockStartTime = Date.now();
@@ -116,6 +118,29 @@ function clearing() {
   console.log("<<< Leaving clearing() function");
 }
 
+function speedQuestion() {
+  console.log(">> Entering speedQuestion() function");
+  var askElement = document.createElement("p");
+  var askQuestion = document.createTextNode("Do you want to see the lap speed?");
+  askElement.appendChild(askQuestion);
+  // Readout Variables
+  var readout = document.getElementById("display");
+  readout.appendChild(askElement);
+  console.log("<< Leaving speedQuestion() function");
+}
+
+function trackSize() {
+  console.log(">> Entering trackSize() function");
+  // Track Size Variables
+  var oneSixth, oneSeventh, oneEighth, oneQuarter, threeEighths,
+      halfMile, threeQuarters, oneMile, mileAndHalf, twoMile, twoMileAndHalf;
+  // Create Buttons
+
+  // Create form
+
+  console.log("<< Leaving trackSize() function");
+}
+
 function createListeners() {
   console.log(">> Entering createListeners() function");
   if (window.addEventListener) {
@@ -147,6 +172,7 @@ function init() {
   console.log("> Entering init() function");
   createListeners();
   copyRight();
+  speedQuestion();
   console.log("< Leaving init() function");
 }
 
