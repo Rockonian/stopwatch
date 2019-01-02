@@ -118,6 +118,18 @@ function clearing() {
   console.log("<<< Leaving clearing() function");
 }
 
+function sizeInput() {
+  console.log(">>> Entering sizeInput() function");
+
+  console.log("<<< Leaving sizeInput() function");
+}
+
+function lapTime() {
+  console.log(">>> Entering lapTime() function");
+
+  console.log("<<< Leaving lapTime() function");
+}
+
 function speedQuestion() {
   console.log(">> Entering speedQuestion() function");
   var askElement = document.createElement("p");
@@ -135,11 +147,9 @@ function speedQuestion() {
   noButton.id = "noSpeed";
   var callTime = document.createTextNode("No");
   noButton.appendChild(callTime);
-
   readout.appendChild(yesButton);
-  readout.appendChild(noButton);  
-  console.log("<< Leaving speedQuestion() function");
-}
+  readout.appendChild(noButton);
+
 
 function trackSize() {
   console.log(">> Entering trackSize() function");
@@ -161,12 +171,16 @@ function createListeners() {
     stopButton.addEventListener("click", stopping, false);
     lapButton.addEventListener("click", lapping, false);
     clearButton.addEventListener("click", clearing, false);
+    yesButton.addEventListener("click", sizeInput, false);
+    noButton.addEventListener("click", lapTime, false);
   } else if (window.attachEvent) {
     console.log("MS button listeners");
     startButton.attachEvent("onclick", starting);
     stopButton.attachEvent("onclick", stopping);
     lapButton.attachEvent("onclick", lapping);
     clearButton.attachEvent("onclick", clearing);
+    yesButton.attachEvent("onclick", sizeInput);
+    noButton.attachEvent("onclick", lapTime);
   }
   console.log("<< Leaving createListeners() function");
 }
