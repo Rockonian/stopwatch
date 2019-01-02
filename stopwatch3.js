@@ -130,39 +130,6 @@ function lapTime() {
   console.log("<<< Leaving lapTime() function");
 }
 
-function speedQuestion() {
-  console.log(">> Entering speedQuestion() function");
-  var askElement = document.createElement("p");
-  var askQuestion = document.createTextNode("Do you want to see the lap speed?");
-  askElement.appendChild(askQuestion);
-  // Readout Variables
-  var readout = document.getElementById("display");
-  readout.appendChild(askElement);
-  // Create Yes and No Buttons
-  var yesButton = document.createElement("BUTTON");
-  yesButton.id = "yesSpeed";
-  var callSize = document.createTextNode("Yes");
-  yesButton.appendChild(callSize);
-  var noButton = document.createElement("BUTTON");
-  noButton.id = "noSpeed";
-  var callTime = document.createTextNode("No");
-  noButton.appendChild(callTime);
-  readout.appendChild(yesButton);
-  readout.appendChild(noButton);
-
-
-function trackSize() {
-  console.log(">> Entering trackSize() function");
-  // Track Size Variables
-  var oneSixth, oneSeventh, oneEighth, oneQuarter, threeEighths,
-      halfMile, threeQuarters, oneMile, mileAndHalf, twoMile, twoMileAndHalf;
-  // Create Buttons
-
-  // Create form
-
-  console.log("<< Leaving trackSize() function");
-}
-
 function createListeners() {
   console.log(">> Entering createListeners() function");
   if (window.addEventListener) {
@@ -171,16 +138,12 @@ function createListeners() {
     stopButton.addEventListener("click", stopping, false);
     lapButton.addEventListener("click", lapping, false);
     clearButton.addEventListener("click", clearing, false);
-    yesButton.addEventListener("click", sizeInput, false);
-    noButton.addEventListener("click", lapTime, false);
   } else if (window.attachEvent) {
     console.log("MS button listeners");
     startButton.attachEvent("onclick", starting);
     stopButton.attachEvent("onclick", stopping);
     lapButton.attachEvent("onclick", lapping);
     clearButton.attachEvent("onclick", clearing);
-    yesButton.attachEvent("onclick", sizeInput);
-    noButton.attachEvent("onclick", lapTime);
   }
   console.log("<< Leaving createListeners() function");
 }
@@ -198,7 +161,6 @@ function init() {
   console.log("> Entering init() function");
   createListeners();
   copyRight();
-  speedQuestion();
   console.log("< Leaving init() function");
 }
 
