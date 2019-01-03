@@ -24,6 +24,11 @@ var lapStopTime = 0;
 var lap = 0;
 var lapTime = 0;
 var averageTime = 0;
+// Track size variables
+var whole = document.getElementById("whole").value
+var numerator = document.getElementById("numerator").value
+var denominator = document.getElementById("denominator").value
+var decimal = document.getElementById("decimal").value
 
 // Time and Speed Results
 function printFinalResults() {
