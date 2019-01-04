@@ -24,29 +24,53 @@ var lapStopTime = 0;
 var lap = 0;
 var lapTime = 0;
 var averageTime = 0;
+var averageSpeed;
+var lapSpeed;
 // Track size variables
-var whole = document.getElementById("whole").value
-var numerator = document.getElementById("numerator").value
-var denominator = document.getElementById("denominator").value
-var decimal = document.getElementById("decimal").value
+var whole = document.getElementById("whole").value;
+var numerator = document.getElementById("numerator").value;
+var denominator = document.getElementById("denominator").value;
+var decimal = document.getElementById("decimal").value;
+var trackSize;
+
+// Validate track size inputs for numerator and denominator
+
+// if and else if to fill variable trackSize
+// if (decimal > 0) {
+//   trackSize = decimal;
+// } else if (whole || numerator || denominator > 0) {
+//   if (whole === 0) {
+//     trackSize = numerator / denominator;
+//   } else {
+//     trackSize = ((numerator * whole) / denominator);
+//   }
+//   console.log("trackSize = " + trackSize);
+// }
 
 // Time and Speed Results
 function printFinalResults() {
+  var decimal = document.getElementById("decimal").value;
   console.log(">>>> Entering printFinalResults() function");
+  console.log("trackSize = " + decimal);
   averageTime = ((clockStopTime - clockStartTime) / lap);
+  averageSpeed = (decimal / (averageTime / 1000 / 60 /60));
   lapTime = (lapStopTime - lapStartTime);
-  console.log("Lap Time = " + lapTime);
-  console.log("Average Time = " + averageTime);
+  lapSpeed = (decimal / (lapTime / 1000 / 60 /60));
+  console.log("Lap Time = " + lapTime + "Lap Speed = " + lapSpeed);
+  console.log("Average Time = " + averageTime + "Average Speed = " + averageSpeed);
   console.log("<<<< Leaving printFinalResults() function");
 }
 
 function printResults() {
+  var decimal = document.getElementById("decimal").value;
   console.log(">>>> Entering printResults() function");
-  console.log("Lap number = " + lap + " Stop Time = " + lapStopTime + " Start Time = " + lapStartTime);
+  console.log("trackSize = " + decimal);
   averageTime = ((clockStopTime - clockStartTime) / lap);
+  averageSpeed = (decimal / (averageTime / 1000 / 60 /60));
   lapTime = (lapStopTime - lapStartTime);
-  console.log("Lap Time = " + lapTime);
-  console.log("Average Time = " + averageTime);
+  lapSpeed = (decimal / (lapTime / 1000 / 60 /60));
+  console.log("Lap Time = " + lapTime + "Lap Speed = " + lapSpeed);
+  console.log("Average Time = " + averageTime + "Average Speed = " + averageSpeed);
   console.log("<<<< Leaving printResults() function");
 }
 
@@ -89,7 +113,8 @@ function stopping() {
 
 function lapping() {
   console.log(">>> Entering lapping() function");
-  lapStopTime = Date.now();
+  clockStopTime = Date.now();
+  lapStopTime = clockStopTime;
   printResults();
   lapStartTime = lapStopTime;
   lap++;
